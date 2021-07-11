@@ -1,0 +1,15 @@
+:host {
+  flex: 1;
+  display: flex;
+}
+
+.no-book-selected {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.form-content {
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}

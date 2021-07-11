@@ -15,16 +15,7 @@ describe('Delete_Book', () => {
   it('should delete book', async () => {
     await page.enterBookTitleToFilter('desert');
     await page.clickDeleteButton();
-    expect(await page.isBookPresent()).toBe(false);
+    expect(await page.isBookListed()).toBe(false);
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(
-      jasmine.objectContaining({
-        level: logging.Level.SEVERE,
-      } as logging.Entry)
-    );
-  });
 });

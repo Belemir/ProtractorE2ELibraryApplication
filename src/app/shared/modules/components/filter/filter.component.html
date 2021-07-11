@@ -1,0 +1,6 @@
+<mat-form-field class="filter-container">
+	<input matInput type="text" placeholder="Filter" [ngModel]="filterValue" (ngModelChange)="updateFilter($event)" #input data-test-filter-input />
+	<button matButton *ngIf="value" matSuffix matIconButton aria-label="Clear" (click)="value=''">
+		<mat-icon>close</mat-icon>
+	</button>
+</mat-form-field>

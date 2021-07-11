@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "eg2.tslint",
+        "msjsdiag.debugger-for-chrome",
+        "Angular.ng-template",
+        "johnpapa.angular2",
+        "michelemelluso.code-beautifier",
+        "cdsama.tortoise-svn-for-vscode",
+		"johnstoncode.svn-scm"
+    ]
+}

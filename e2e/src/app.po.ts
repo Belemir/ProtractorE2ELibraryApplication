@@ -1,4 +1,4 @@
-import { browser, by, element, ExpectedConditions } from 'protractor';
+import { browser, by, element, ExpectedConditions, Key } from 'protractor';
 
 export class AppPage {
   async navigateTo(): Promise<unknown> {
@@ -18,6 +18,10 @@ export class AppPage {
     await element(by.css('[data-test-book-details-save-button]')).click();
   }
 
+  async clickAuthorInput() {
+    await element(by.css('[data-test-book-details-author-input]')).click();
+  }
+
   async clickCancelButton() {
     await element(by.css('[data-test-book-details-cancel-button]')).click();
   }
@@ -30,6 +34,19 @@ export class AppPage {
       30000
     );
     element(by.css('[data-test-book-delete-icon]')).click();
+    await browser.wait(
+      ExpectedConditions.stalenessOf(
+        element(by.css('[data-test-book-delete-icon]'))
+      ),
+      30000
+    );
+  }
+
+  async clickBookTitle() {
+    const bookTitleField = element(
+      by.css('[data-test-book-details-title-input]')
+    );
+    await bookTitleField.click();
   }
 
   // Field Actions
@@ -37,7 +54,7 @@ export class AppPage {
     await element(by.css('[data-test-filter-input]')).sendKeys(bookTitle);
   }
 
-  async cleanBookTitleToFilter() {
+  async clearBookTitleToFilter() {
     await element(by.css('[data-test-filter-input]')).clear();
   }
 
@@ -51,6 +68,34 @@ export class AppPage {
     );
     await bookTitleField.clear();
     await bookTitleField.sendKeys(bookTitle);
+  }
+
+  async clearBookTitle() {
+    const bookTitleField = element(
+      by.css('[data-test-book-details-title-input]')
+    );
+    await bookTitleField.sendKeys(Key.BACK_SPACE);
+  }
+
+  async clearBookAuthor() {
+    const bookAuthorField = element(
+      by.css('[data-test-book-details-author-input]')
+    );
+    await bookAuthorField.sendKeys(Key.BACK_SPACE);
+  }
+
+  async clearBookPublisher() {
+    const bookPublisherField = element(
+      by.css('[data-test-book-details-publisher-input]')
+    );
+    await bookPublisherField.sendKeys(Key.BACK_SPACE);
+  }
+
+  async clearYearOfPublishing() {
+    const bookYearOfPublishingField = element(
+      by.css('[data-test-book-details-year-input]')
+    );
+    await bookYearOfPublishingField.sendKeys(Key.BACK_SPACE);
   }
 
   async enterBookAuthor(bookAuthor: string) {
@@ -119,11 +164,44 @@ export class AppPage {
     ).getAttribute('value');
   }
 
+  async getBookTitleWarning() {
+    const bookTitleWarningLabel = element(
+      by.css('[data-test-book-details-title-error]')
+    );
+    await browser.wait(
+      ExpectedConditions.elementToBeClickable(bookTitleWarningLabel),
+      10000
+    );
+    return await bookTitleWarningLabel.getText();
+  }
+
+  async getBookPublisherWarning() {
+    const bookPublisherWarningLabel = element(
+      by.css('[data-test-book-details-publisher-error]')
+    );
+    await browser.wait(
+      ExpectedConditions.elementToBeClickable(bookPublisherWarningLabel),
+      10000
+    );
+    return await bookPublisherWarningLabel.getText();
+  }
+
+  async getYearOfPublishingWarning() {
+    const bookYearOfPublishingWarnigLabel = element(
+      by.css('[data-test-book-details-year-error]')
+    );
+    await browser.wait(
+      ExpectedConditions.elementToBeClickable(bookYearOfPublishingWarnigLabel),
+      10000
+    );
+    return await bookYearOfPublishingWarnigLabel.getText();
+  }
+
   async getBook() {
     return await element(by.css('[data-test-book-title]')).getText();
   }
 
-  async isBookPresent() {
-    return await element(by.css('[data-test-book-delete-icon]')).isPresent();
+  async isBookListed() {
+    return await element(by.css('[data-test-book-title]')).isPresent();
   }
 }

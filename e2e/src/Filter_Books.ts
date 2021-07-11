@@ -18,16 +18,17 @@ describe('Filter_Books', () => {
   });
 
   it('should filter books by partial book name', async () => {
-    await page.cleanBookTitleToFilter();
+    await page.clearBookTitleToFilter();
     await page.enterBookTitleToFilter('deser');
     expect(await page.getBook()).toContain('desert solitaire');
   });
 
-  // it('should filter books by book name case insensitively', async () => {
-  //   await page.cleanBookTitleToFilter();
-  //   await page.enterBookTitleToFilter('DeSert');
-  //   expect(await page.getBook()).toContain('desert solitaire');
-  // });
+  it('should filter books by book name case insensitively', async () => {
+    await page.clearBookTitleToFilter();
+    await page.enterBookTitleToFilter('DeSert');
+    // There is a bug here, filter does not work case insensitively, therefore this step will fail
+    expect(await page.getBook()).toContain('desert solitaire');
+  });
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser

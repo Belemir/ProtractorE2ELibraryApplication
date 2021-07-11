@@ -1,0 +1,54 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+	"files.trimTrailingWhitespace": true,
+	"files.exclude": {
+		"**/*.js": {
+			"when": "$(basename).ts"
+		},
+		"**/*.map": {
+			"when": "$(basename)"
+		},
+		"**/*.css": {
+			"when": "$(basename).scss"
+		},
+		"**/*.metadata.json": true,
+		"node_modules": true,
+		"npm": true,
+		"aot": true,
+		"dist": true,
+		"build*": true,
+		"versioned*": true,
+		"*.cmd": true,
+		"test_output": true,
+		"npm-debug.log*": true,
+		"web.config": true
+	},
+	"search.exclude": {
+		"npm": true,
+		"node_modules": true,
+		"build": true,
+		"build*": true,
+		"*.cmd": true,
+		"aot": true,
+		"build-tests": true,
+		"dist": true,
+		"test_output": true
+	},
+	"typescript.tsdk": "./node_modules/typescript/lib",
+	"tslint.rulesDirectory": "./node_modules/codelyzer",
+	"editor.wordBasedSuggestions": false,
+	"editor.insertSpaces": true,
+	"editor.tabSize": 4,
+
+	"beautify.options": {
+		"css": {
+			"indent_size": 2,
+			"selector_separator_newline": true,
+			"end_with_newline": true,
+			"space_around_selector_separator": true,
+			"preserve_newlines": true,
+			"max_preserve_newlines": 1
+		}
+	},
+	"eslint.enable": true
+}

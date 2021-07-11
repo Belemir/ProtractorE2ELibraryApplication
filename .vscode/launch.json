@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "command": "npm run e2e",
+            "name": "Run npm e2e",
+            "request": "launch",
+            "type": "node-terminal"
+        }
+    ]
+}

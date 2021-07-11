@@ -1,0 +1,24 @@
+:host {
+  margin: 20px;
+  display: block;
+  height: 50%;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.columns > * {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.list {
+  width: 400px;
+  position: relative;
+  height: 100%;
+  border: 1px solid lightgrey;
+  overflow: auto;
+}

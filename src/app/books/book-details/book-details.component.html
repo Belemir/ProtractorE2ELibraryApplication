@@ -1,0 +1,46 @@
+<div *ngIf="book == null" class="no-book-selected" data-test-book-is-not-selected>
+  Please, select the book
+</div>
+<mat-card *ngIf="book != null">
+  <form class="example-form" (ngSubmit)="onSubmit()">
+    <mat-card-title data-test-book-details-title>{{book.title}}</mat-card-title>
+    <mat-card-content class="form-content">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Title" [formControl]="titleControl" [errorStateMatcher]="matcher" data-test-book-details-title-input>
+        <mat-error *ngIf="titleControl.hasError('required')" data-test-book-details-title-error>
+          Title is
+          <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Author" [formControl]="authorControl" [errorStateMatcher]="matcher" data-test-book-details-author-input>
+        <mat-error *ngIf="authorControl.hasError('required')" data-test-book-details-author-error>
+            Author is
+          <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Publisher" [formControl]="publisherControl" [errorStateMatcher]="matcher" data-test-book-details-publisher-input>
+        <mat-error *ngIf="publisherControl.hasError('required')" data-test-book-details-publisher-error>
+            Publisher is
+          <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input type="number" matInput placeholder="Year of publishing" [formControl]="yearControl" [errorStateMatcher]="matcher" data-test-book-details-year-input>
+        <mat-error *ngIf="yearControl.hasError('required')" data-test-book-details-year-error>
+          Year is
+          <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button type="submit" color="primary" [disabled]="!form.dirty" data-test-book-details-save-button>SAVE</button>
+      <button mat-button type="button" (click)="onCancel()" [disabled]="!form.dirty" data-test-book-details-cancel-button>CANCEL</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -39,10 +39,11 @@ describe('Update_Book_Card', () => {
     expect(await page.getBookPublishYear()).toContain('1877');
   });
 
-  // it('should cancel book update', async () => {
-  //   await page.clickBook();
-  //  // cancel book update here
-  // });
+  it('should cancel book update', async () => {
+    await page.enterBookAuthor('Test');
+    await page.clearBookAuthor();
+    await page.clickCancelButton();
+  });
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser

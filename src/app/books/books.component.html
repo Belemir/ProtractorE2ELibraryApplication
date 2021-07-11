@@ -1,0 +1,14 @@
+<div class="columns">
+  <div class="list">
+    <app-filter [items]="books" [comparer]="filterComparer" #filter data-test-books-filter></app-filter>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let book of filter.filteredItems" [routerLink]="[book.id]" [attr.data-test-book-link]="book.id">
+        <a matLine data-test-book-title>{{book.title}}</a>
+        <mat-icon mat-list-icon>book</mat-icon>
+        <mat-icon mat-icon-button (click)="onDelete(book.id)" data-test-book-delete-icon>delete</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
