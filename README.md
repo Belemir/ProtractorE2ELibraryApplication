@@ -1,4 +1,3 @@
-# Environment Setup for ZyLAB Automation Task
 
 ## Prerequisites
 * Node.js should be installed and available from command line
